@@ -6,7 +6,7 @@ l"""{ fact
         rec.  all x: Z |
                 x > 0 -> f(x) == f(x-1) * x        }"""
 val n: Z = readInt("Type a non-negative int: ")
-assert(n >= 0)
+assume(n >= 0)
 l"""{ 1. n >= 0                  premise           }"""
 var i: Z = 0
 var r: Z = 1

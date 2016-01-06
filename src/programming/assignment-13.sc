@@ -1,9 +1,9 @@
 import org.sireum.logika._
 
-var x: Z = readInt()
-// the precondition is that x falls in the range, 1,2,..,99
+var x: Z = randomInt()
 
-assert(x > 0 && x < 100)
+// the precondition is that x falls in the range, 1,2,..,99
+assume(x > 0 && x < 100)
 l"""{ 1. x > 0 ∧ x < 100           premise    }"""
 
 x = x + 1

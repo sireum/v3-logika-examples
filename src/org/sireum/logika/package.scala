@@ -25,6 +25,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package org.sireum
 
+import scala.annotation.Annotation
+
 package object logika {
   type B = Boolean
   type Z = BigInt
@@ -120,4 +122,9 @@ package object logika {
     Console.out.flush()
     Z(Console.in.readLine())
   }
+
+  final def randomInt(): Z =
+    BigInt(128, new scala.util.Random())
+
+  class helper extends Annotation
 }

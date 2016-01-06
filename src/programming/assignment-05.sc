@@ -4,7 +4,7 @@ val x: Z = readInt("Enter x: ")
 
 val y: Z = readInt("Enter y (< x): ")
 
-assert(x > y)
+assume(x > y)
 l"""{ 1.  x > y      premise     }"""
 
 val max: Z = x
