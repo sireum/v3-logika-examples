@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="scala-sdk-2.11.7" level="project" />
+    <orderEntry type="library" name="sireum-v3-logika-runtime" level="project" />
   </component>
 </module>

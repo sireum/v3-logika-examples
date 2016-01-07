@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="sireum-v3-logika-runtime">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/sireum-v3-logika-runtime.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
