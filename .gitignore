@@ -11,3 +11,5 @@ project/boot/
 project/plugins/project/
 .scala_dependencies
 .worksheet
+*.scala
+*.sc
