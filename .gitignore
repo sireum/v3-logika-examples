@@ -13,3 +13,4 @@ project/plugins/project/
 .worksheet
 *.scala
 *.sc
+/lib

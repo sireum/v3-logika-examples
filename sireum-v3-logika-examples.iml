@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="scala-sdk-2.11.7" level="project" />
-    <orderEntry type="library" name="org.sireum:logika-runtime_2.11:3.0.0" level="project" />
+    <orderEntry type="library" name="org.sireum:logika-runtime_2.11:3.0.0-1" level="project" />
+    <orderEntry type="library" name="scala-sdk-2.11.7" level="application" />
   </component>
 </module>
