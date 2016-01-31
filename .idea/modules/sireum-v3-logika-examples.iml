@@ -24,6 +24,6 @@
     <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.7:jar" level="project" />
     <orderEntry type="library" name="SBT: org.apfloat:apfloat:1.8.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.11.7:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.sireum:logika-runtime_2.11:3.0.0-2:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.sireum:logika-runtime_2.11:3.0.0-3:jar" level="project" />
   </component>
 </module>
