@@ -1,6 +1,6 @@
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
-libraryDependencies += "org.sireum" %% "logika-runtime" % "3.0.0-3"
+libraryDependencies += "org.sireum" %% "logika-runtime" % "3.0.0-7"
 
 incOptions := incOptions.value.withNameHashing(true)
 
