@@ -1,6 +1,6 @@
-type ^[P, Q] = (P, Q)                                                  // ∧
+type ^[P, Q] = Tuple2[P, Q]  /* or, ... = (P, Q) */                    // ∧
 type V[P, Q] = Either[P, Q]                                            // ∨
-type ->[P, Q] = P => Q                                                 // →
+type ->[P, Q] = Function[P, Q] /* or, ... = P => Q */                  // →
 
 def andi[P, Q](p: P, q: Q): P ^ Q = (p, q)                             // ∧i-rule
 
@@ -19,7 +19,7 @@ def ore[P, Q, R](pORq: P V Q, pDEDUCEr: P => R, qDEDUCEr: Q => R): R = // ∨e-r
   }
 
 def implyi[P, Q](pDEDUCEq: P => Q): P -> Q =                           // →i rule
-    (p) => pDEDUCEq(p)
+  (p) => pDEDUCEq(p) /* or, pDEDUCEq */
 
 def implye[P, Q](pIMPLYq: P -> Q, p: P): Q =                           // →e rule
   pIMPLYq(p)
