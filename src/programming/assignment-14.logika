@@ -21,3 +21,6 @@ l"""{ 1. money_old == (dimes - 1) * 10       premise
       4. money - 10 == ((dimes - 1) * 10)    subst1 3 1
       5. money == ((dimes - 1) * 10) + 10    algebra 4
       6. money == dimes * 10                 algebra 5  }"""
+
+// Claim that the invariant has been re-established
+assert(money == dimes * 10)

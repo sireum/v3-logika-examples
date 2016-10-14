@@ -9,3 +9,4 @@ val minutes: Z = hours * 60
 l"""{ 1. hours > 2                premise
       2. minutes == hours * 60    premise
       3. minutes > 120            algebra 1 2 }"""
+assert(minutes > 120)
