@@ -1,14 +1,15 @@
-// a Logika program always start with importing org.sireum.logika._
+// A Logika program always starts with importing org.sireum.logika._
 import org.sireum.logika._
 
-// All variable have to be declared and typed
-// B is a boolean type
-// Z is arbitrary-precision integer type
-// ZS is a sequence (dynamic array) of Z
+// All variables have to be declared and explicit typed
+// Types:
+// B   boolean type
+// Z   arbitrary-precision integer type (big integer)
+// ZS  sequence (dynamic array) of Z
 
 // Read-only variable declarations (val)
 val a: B = true
-var b: B = a & !a | a // note: & is logical-and (not short-circuit), ! is negation, | is logical-or (inclusive)
+val b: B = a & !a | a          // note: & is logical-and (not short-circuit), ! is negation, | is logical-or (inclusive)
 val x: Z = 100
 val y: Z = x * -2 + x / 2 - 10 // note: / is integer division
 
@@ -16,12 +17,12 @@ val y: Z = x * -2 + x / 2 - 10 // note: / is integer division
 var z: Z = y * -1
 z = z + 1
 
-var s: ZS = ZS() // ZS() is empty sequence literal
-s = ZS(1, 2, 3)
-s = s :+ 4 // append
-s = 0 +: s // prepend
-s(0) = -1 // sequence update (assign -1 to s at index 0)
-s(0) = s(0) + 1 // sequence lookup and update
+var s: ZS = ZS()               // ZS() is the empty sequence literal
+s = ZS(1, 2, 3)                // a integer sequence containing 1, 2, and 3
+s = s :+ 4                     // appending an integer
+s = 0 +: s                     // prepending an integer
+s(0) = -1                      // sequence update (assign -1 to s at index 0)
+s(0) = s(0) + 1                // sequence lookup and update
 
 // assumption
 assume(s(0) >= 0)
@@ -38,8 +39,8 @@ if (x > 0) {
 
 // while-loop
 while (z > 0) {
-  print("z is: ") // print to console
-  println(z, ".") // print z. to console with newline
+  print("z is: ")              // print to console
+  println(z, ".")              // print z. to console with newline
   z = z - 1
 }
 
@@ -57,5 +58,5 @@ def f(n: Z): Z = {
 
 // procedure
 def g(n: Z): Unit = {
-  z = h(n) // function call
+  z = h(n)                     // function call
 }
