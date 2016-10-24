@@ -5,42 +5,27 @@ val y: Z = readInt()
 var max: Z = 0
 
 if (x > y) {
-
-  l"""{  1. x > y                                          premise    }"""
+  l"""{  1. x > y                    premise    }"""
   max = x
-  l"""{  1. max == x                                       premise
-         2. max ≥ x                                        algebra 1
-         3. x > y                                          premise
-         4. max > y                                        subst2 1 3
-         5. max ≥ y                                        algebra 4
-         6. max ≥ x ∧ max ≥ y                              ∧i 2 5
-         7. (max ≥ x ∧ max ≥ y) ∧ max == x                 ∧i 6 1   }"""
-
+  l"""{  1. max == x                 premise
+         2. x > y                    premise
+         3. max ≥ x                  algebra 1
+         4. max > y                  subst2 1 2
+         5. max ≥ y                  algebra 4  }"""
 } else {
-
-  l"""{  1. not (x > y)                                    premise    }"""
+  l"""{  1. ¬(x > y)                 premise    }"""
   max = y
-  l"""{  1. max == y                                       premise
-         2. max ≥ y                                        algebra 1
-         3. not (x > y)                                    premise
-         4. y ≥ x                                          algebra 3
-         5. max ≥ x                                        subst2 1 4
-         6. max ≥ x ∧ max ≥ y                              ∧i 5 2
-         7. (max ≥ x ∧ max ≥ y) ∧ max == y                 ∧i 6 1   }"""
+  l"""{  1. max == y                 premise
+         2. ¬(x > y)                 premise
+         3. max ≥ y                  algebra 1
+         4. y ≥ x                    algebra 2
+         5. max ≥ x                  subst2 1 4 }"""
 }
-l"""{  1. ((max ≥ x ∧ max ≥ y) ∧ max == x) ∨
-            ((max ≥ x ∧ max ≥ y) ∧ max == y)               premise
-       2. {
-            3. (max ≥ x ∧ max ≥ y) ∧ max == x              assume
-            4. max ≥ x ∧ max ≥ y                           ∧e1 3
-            5. max == x                                    ∧e2 3
-          }
-       6. {
-            7. (max ≥ x ∧ max ≥ y) ∧ max == y              assume
-            8. max ≥ x ∧ max ≥ y                           ∧e1 7
-            9. max == y                                    ∧e2 7
-          }
-      10. max ≥ x ∧ max ≥ y                                ∨e 1 2 6
-      11. max == x ∨ max == y                              ∨e 1 2 6  }"""
-assert(max >= x & max >= y)
-assert(max == x | max == y)
+l"""{  1. max ≥ x                    premise
+       2. max ≥ y                    premise
+       3. max == x ∨ max == y        premise
+       4. max ≥ x ∧ max ≥ y          ∧i 1 2
+       5. max ≥ x ∧ max ≥ y ∧
+            (max == x ∨ max == y)    ∧i 4 3     }"""
+assert(max >= x & max >= y &
+       (max == x | max == y))
