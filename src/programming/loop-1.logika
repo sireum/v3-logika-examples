@@ -43,7 +43,7 @@ def mult(m: Z, n: Z): Z = {
 
   println("After loop: m = ", m, ", n = ", n, ", i = ", i, ", r = ", r)
 
-  // Assume: I and !B hold
+  // Assume: I and ¬(B) hold
   // Guarantee: Post
   l"""{ 1. ¬(i ≠ n)                premise // from loop condition
         2. r == m * i              premise // from loop invariant
