@@ -6,10 +6,13 @@ l"""{
       = 0,                           if j == 0                  (c0)
       = countTill(zs, x, j - 1),     if j ≥ 1 ∧ zs(j - 1) ≠ x   (cEq)
       = countTill(zs, x, j - 1) + 1, if j ≥ 1 ∧ zs(j - 1) == x  (cNe)
+
+    def count(zs: ZS, x: Z): Z
+      = countTill(zs, x, zs.size),   if true                    (ct)
 }"""
 
 def countN(a: ZS, n: Z): Z = {
-  l"""{ ensures result == countTill(a, n, a.size) }"""
+  l"""{ ensures result == count(a, n) }"""
   var r: Z = 0
   var i: Z = 0
   while (i < a.size) {

@@ -11,10 +11,13 @@ l"""{
     cNe. ∀zs: ZS  ∀x: Z  ∀j: Z
            j ≥ 1 ∧ zs(j - 1) == x →
              countTill(zs, x, j) == countTill(zs, x, j - 1) + 1
+
+    def count(zs: ZS, x: Z): Z
+    ct.  ∀zs: ZS  ∀x: Z  count(zs, x) == countTill(zs, x, zs.size)
 }"""
 
 def countN(a: ZS, n: Z): Z = {
-  l"""{ ensures result == countTill(a, n, a.size)  }"""
+  l"""{ ensures result == count(a, n)  }"""
   var r: Z = 0
   var i: Z = 0
   while (i < a.size) {
