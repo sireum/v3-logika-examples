@@ -1,0 +1,34 @@
+import org.sireum.logika._
+
+l"""{
+  fact
+    def countTill(zs: ZS, x: Z, j: Z): Z
+      = 0,                           if j == 0                  (c0)
+      = countTill(zs, x, j - 1),     if j ≥ 1 ∧ zs(j - 1) ≠ x   (cEq)
+      = countTill(zs, x, j - 1) + 1, if j ≥ 1 ∧ zs(j - 1) == x  (cNe)
+}"""
+
+def countN(a: ZS, n: Z): Z = {
+  l"""{ ensures result == countTill(a, n, a.size) }"""
+  var r: Z = 0
+  var i: Z = 0
+  while (i < a.size) {
+    l"""{ invariant 0 ≤ i
+                    i ≤ a.size
+                    r == countTill(a, n, i)
+          modifies i, r }"""
+    if (a(i) == n) {
+      r = r + 1
+      l"""{ 1. r == countTill(a, n, i) + 1    auto }"""
+    }
+    i = i + 1
+      l"""{ 1. 0 ≤ i                          auto
+            2. i ≤ a.size                     auto
+            3. r == countTill(a, n, i)        auto }"""
+  }
+  return r
+}
+
+val a: ZS = ZS(1, 1, 3)
+val r: Z = countN(a, 1)
+assert(r == 2)

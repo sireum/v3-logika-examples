@@ -1,0 +1,20 @@
+import org.sireum.logika._
+
+def max(x: Z, y: Z): Z = {
+  l"""{ // note: result is a special variable that holds the return value of max
+        ensures result ≥ x ∧ result ≥ y ∧
+                   (result == x ∨ result == y) }"""
+  var r: Z = 0
+
+  if (x > y) {
+    r = x
+  } else {
+    r = y
+  }
+  return r
+}
+
+val x: Z = readInt()
+val y: Z = readInt()
+val r: Z = max(x, y)
+assert(r >= x & r >= y & (r == x | r == y))

@@ -1,0 +1,28 @@
+import org.sireum.logika._
+
+l"""{
+  fact // axioms
+    def f(n: Z): Z
+    fZero. f(0) == 1
+    fPos.  ∀x: Z  x > 0 → f(x) == f(x - 1) * x
+}"""
+
+def factorial(n: Z): Z = {
+  l"""{ requires n ≥ 0
+        ensures result == f(n)              }"""
+  var r: Z = 1
+  var i: Z = 0
+  while (i < n) {
+    l"""{ invariant r == f(i)
+                    i ≥ 0
+                    i ≤ n
+          modifies r, i                     }"""
+    i = i + 1
+    l"""{ 1. r == f(i - 1)             auto
+          2. i > 0                     auto
+          3. i ≤ n                     auto }"""
+    r = r * i
+    l"""{ 1. r == f(i)                 auto }"""
+  }
+  return r
+}

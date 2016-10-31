@@ -1,0 +1,17 @@
+import org.sireum.logika._
+
+var dimes: Z = readInt()
+var money: Z = dimes * 10
+
+assert(money == dimes * 10)
+
+// Say that one more dime shows up:
+dimes = dimes + 1
+l"""{ 1. money == (dimes - 1) * 10           auto }"""
+
+// The amount of money is less that what it should be; fix it:
+money = money + 10
+l"""{ 1. money == dimes * 10                 auto }"""
+
+// Claim that the invariant has been re-established
+assert(money == dimes * 10)

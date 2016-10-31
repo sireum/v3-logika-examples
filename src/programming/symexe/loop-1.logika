@@ -1,0 +1,23 @@
+import org.sireum.logika._
+
+// Given non-negative integer arguments m and n,
+// mult computes multiplication of m and n by using repeated addition.
+def mult(m: Z, n: Z): Z = {
+  l"""{
+    requires  m ≥ 0 ∧ n ≥ 0
+    ensures   result == m * n
+  }"""
+
+  var r: Z = 0
+  var i: Z = 0
+
+  while (i != n) {
+    l"""{ invariant r == m * i
+          modifies r, i                  }"""
+
+    r = r + m
+    i = i + 1
+  }
+
+  return r
+}
