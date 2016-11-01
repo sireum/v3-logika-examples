@@ -2,7 +2,7 @@ import org.sireum.logika._
 
 def square(a: ZS): Unit = {
   l"""{ modifies     a
-        post         ∀i: (0 ..< a.size)  a(i) == a_in(i) * a_in(i)              }"""
+        ensures      ∀i: (0 ..< a.size)  a(i) == a_in(i) * a_in(i) }"""
 
   var x: Z = 0
 
@@ -11,7 +11,7 @@ def square(a: ZS): Unit = {
                      ∀i: (x ..< a.size)  a(i) == a_in(i)
                      0 ≤ x
                      x ≤ a.size
-          modifies   x, a                                                       }"""
+          modifies   x, a                                          }"""
 
     a(x) = a(x) * a(x)
 

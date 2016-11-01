@@ -4,7 +4,7 @@ import org.sireum.logika._
 // in place so that each of its ints are squared
 def square(a: ZS): Unit = {
   l"""{ modifies     a
-        post         ∀i: (0 ..< a.size)  a(i) == a_in(i) * a_in(i)              }"""
+        ensures      ∀i: (0 ..< a.size)  a(i) == a_in(i) * a_in(i)              }"""
 
   l"""{ 1. a == a_in                                         premise            }"""
 
