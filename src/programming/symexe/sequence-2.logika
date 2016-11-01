@@ -10,6 +10,7 @@ def swap(a: ZS, i: Z, j: Z): Unit = {  // Unit is like void in Java
                  a(i) == a_in(j) ∧ a(j) == a_in(i)
                  ∀k: (0 ..< a.size)
                    k ≠ i ∧ k ≠ j → a(k) == a_in(k)
+                 a.size == a_in.size
   }"""
   val t: Z = a(i)
   a(i) = a(j)
