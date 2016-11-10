@@ -1,0 +1,18 @@
+import org.sireum.logika._
+
+def add1(x: Z): Z = {
+  // increase x by 1
+  l"""{ requires  x > 0 ∧ x < 100
+        ensures   result == x + 1
+  }"""
+  var y: Z = x + 1
+  return y
+}
+
+val a: Z = readInt()
+if (a > 0 & a < 100) {
+  l"""{ 1. a > 0 ∧ a < 100   premise }"""
+  val b: Z = add1(a)
+  l"""{ 1. b == a + 1        premise }"""
+  assert(b == a + 1)
+}

@@ -3,12 +3,7 @@ import org.sireum.logika._
 val IntMax: Z = 2147483647
 val a: Z = readInt()
 if (a < 0) {
-    l"""{1. a < 0                  premise
-         2. IntMax = 2147483647    premise
-         3. a < IntMax             algebra 1 2
-    }"""
     val b: Z = increase(a)
-    l"""{ 1. b == a + 1            premise }"""
     assert(b == a + 1)
 }
 

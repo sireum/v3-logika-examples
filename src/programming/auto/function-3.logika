@@ -1,0 +1,20 @@
+import org.sireum.logika._
+
+def absValue(x: Z): Z = {
+  l"""{ requires  x != 0
+        ensures   result > 0           }"""
+
+  var ans: Z = 0
+  if (x < 0) {
+    ans = -x
+  } else {
+    ans = x
+  }
+  return ans
+}
+
+val n: Z = readInt()
+if (n != 0) {
+  val m: Z = absValue(n)
+  assert(m > 0)
+}

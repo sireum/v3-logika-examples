@@ -13,19 +13,11 @@ def calcInterest(principal: Z) : Z = {
 
 var myMoney : Z = 500
 
-l"""{ 1. myMoney == 500                        premise
-      2. myMoney ≥ 0                           algebra 1 }"""
 assert (myMoney >= 0)
-
-l"""{ 1. interestRate == 10                    premise
-      2. interestRate ≥ 0                      algebra 1 }"""
 assert (interestRate >= 0)
 
-l"""{ 1. interestRate ≥ 0                      premise
-      2. myMoney ≥ 0                           premise
-      3. interestRate ≥ 0 ∧  myMoney ≥ 0       ∧i 1 2    }"""
+// we know the precondition for the function holds
 calcInterest(myMoney)
 // we get to assume its postcondition
 
-l"""{ 1.  interest == myMoney * interestRate   premise   }"""
 assert(interest == myMoney * interestRate)
