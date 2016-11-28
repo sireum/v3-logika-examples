@@ -1,0 +1,28 @@
+import org.sireum.logika._
+
+l"""{
+  fact // axioms
+    def f(n: Z): Z
+    fZero. f(0) == 1
+    fPos.  ∀x: Z  x > 0 → f(x) == f(x - 1) * x
+}"""
+
+def factorialRec(n: Z): Z = {
+  l"""{ requires n ≥ 0
+        ensures  result == f(n) }"""
+
+  var r: Z = 1
+
+  // Start
+
+  if (n != 0) {
+    r = factorialRec(n - 1)
+
+    r = r * n
+
+  }
+
+  // End
+
+  return r
+}

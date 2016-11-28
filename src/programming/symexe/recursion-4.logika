@@ -1,0 +1,18 @@
+import org.sireum.logika._
+
+def squareRec(a: ZS, i: Z): Unit = {
+  l"""{ requires 0 ≤ i
+        modifies a
+        ensures  ∀j: (i ..< a.size) a(j) == a_in(j) * a_in(j)
+                 ∀j: (0 ..< i)      j < a.size → a(j) == a_in(j)
+                 a.size == a_in.size                             }"""
+
+  // Start
+
+  if (i < a.size) {
+    a(i) = a(i) * a(i)
+    squareRec(a, i + 1)
+  }
+
+  // End
+}

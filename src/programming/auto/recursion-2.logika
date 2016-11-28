@@ -1,0 +1,48 @@
+import org.sireum.logika._
+
+l"""{
+  fact // axioms
+    def f(n: Z): Z
+    fZero. f(0) == 1
+    fPos.  ∀x: Z  x > 0 → f(x) == f(x - 1) * x
+}"""
+
+def factorialRec(n: Z): Z = {
+  l"""{ requires n ≥ 0
+        ensures  result == f(n) }"""
+
+  var r: Z = 1
+
+  // Start
+
+  if (n != 0) {
+
+    l"""{ 1. n - 1 ≥ 0                       auto         }"""
+
+    r = factorialRec(n - 1)
+
+    l"""{ 1. r == f(n - 1)                   premise       }"""
+
+    r = r * n
+
+    l"""{ 1. r_old == f(n - 1)               premise
+          2. r == r_old * n                  premise
+          3. n ≠ 0                           premise
+          4. n ≥ 0                           premise
+          5. r == f(n - 1) * n               subst1 1 2
+          6. ∀x: Z
+               x > 0 →
+                 f(x) == f(x - 1) * x        fact fPos
+          7. f(n) == f(n - 1) * n            auto
+          8. r == f(n)                       auto         }"""
+  } else {
+    l"""{ 1. ¬(n ≠ 0)                        premise
+          2. r == 1                          premise
+          3. f(0) == 1                       fact fZero
+          4. r == f(n)                       algebra 1 2 3 }"""
+  }
+
+  // End
+
+  return r
+}

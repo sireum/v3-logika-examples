@@ -1,0 +1,37 @@
+import org.sireum.logika._
+
+def multRec(m: Z, n: Z): Z = {
+  l"""{ requires n ≥ 0
+        ensures  result == m * n                 }"""
+
+  var r: Z = 0
+
+  // Start
+
+  if (n != 0) {
+
+    l"""{ 1. n ≥ 0                   premise
+          2. n ≠ 0                   premise
+          3. n - 1 ≥ 0               algebra 1 2 }"""
+
+    r = multRec(m, n - 1)
+
+    l"""{ 1. r == m * (n - 1)        premise     }"""
+
+    r = m + r
+
+    l"""{ 1. r_old == m * (n - 1)    premise
+          2. r == m + r_old          premise
+          3. r == m + m * (n - 1)    subst1 1 2
+          4. r == m * n              algebra 3   }"""
+
+  } else {
+    l"""{ 1. ¬(n ≠ 0)                premise
+          2. r == 0                  premise
+          3. r == m * n              algebra 1 2 }"""
+  }
+
+  // End
+
+  return r
+}
