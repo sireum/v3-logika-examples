@@ -9,7 +9,7 @@ def squareRec(a: ZS, i: Z): Unit = {
 
   // Start
 
-  if (i < a.size) {
+  if (i != a.size) {
     a(i) = a(i) * a(i)
     squareRec(a, i + 1)
   }
