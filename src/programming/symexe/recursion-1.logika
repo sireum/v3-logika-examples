@@ -4,9 +4,10 @@ def multRec(m: Z, n: Z): Z = {
   l"""{ requires n ≥ 0
         ensures  result == m * n }"""
 
+  var r: Z = 0
+
   // Start
 
-  var r: Z = 0
   if (n != 0) {
     r = multRec(m, n - 1)
     r = m + r
