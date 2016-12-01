@@ -9,15 +9,15 @@ def squareRec(a: ZS, i: Z): Unit = {
 
   // decreases  a.size - i
 
-  val decreasesPre: Z = a.size - i
+  val decreasesEntry: Z = a.size - i
 
   if (i < a.size) {
     a(i) = a(i) * a(i)
 
     val decreasesRec: Z = a.size - (i + 1)
 
-    assert(decreasesRec < decreasesPre)
-    assert(decreasesPre > 0)
+    assert(decreasesRec < decreasesEntry)
+    assert(decreasesEntry > 0)
 
     squareRec(a, i + 1)
   }
