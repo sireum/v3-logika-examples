@@ -1,0 +1,28 @@
+import org.sireum.logika._
+
+def multRec(m: Z, n: Z): Z = {
+  l"""{ requires n ≥ 0
+        ensures  result == m * n }"""
+
+  // decreases  n
+
+  val decreasesEntry: Z = n
+
+  var r: Z = 0
+
+  if (n != 0) {
+
+    val decreasesRec: Z = n - 1
+
+    l"""{ 1. decreasesRec < decreasesEntry    auto
+          2. decreasesEntry > 0               auto }"""
+    // or
+    assert(decreasesRec < decreasesEntry)
+    assert(decreasesEntry > 0)
+
+    r = multRec(m, n - 1)
+    r = m + r
+  }
+
+  return r
+}

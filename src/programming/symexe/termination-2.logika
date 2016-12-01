@@ -1,0 +1,42 @@
+import org.sireum.logika._
+
+// Given a non-negative integer argument n,
+// factorial computes n!, where n! is defined as follows
+//   0! == 1
+//   1! == 1 * 0!
+//   2! == 2 * 1!
+//   …
+//   n! == n * (n – 1)!     (if n > 0)
+
+l"""{
+  fact // axioms
+    def f(n: Z): Z
+    fZero. f(0) == 1
+    fPos.  ∀x: Z  x > 0 → f(x) == f(x - 1) * x
+}"""
+
+def factorial(n: Z): Z = {
+  // Goal: return 1 * 2 * 3 * … * n
+  l"""{ requires n ≥ 0
+        ensures result == f(n)              }"""
+  var r: Z = 1
+  var i: Z = 0
+  while (i < n) {
+    l"""{ invariant r == f(i)
+                    i ≥ 0
+                    i ≤ n
+          modifies r, i                     }"""
+
+    // decreases  n - i
+    val decreasesPre: Z = n - i
+
+    i = i + 1
+    r = r * i
+
+    val decreasesPost: Z = n - i
+
+    l"""{ 1. decreasesPost < decreasesPre    auto
+          2. decreasesPost ≤ 0 → ¬(i < n)    auto }"""
+  }
+  return r
+}
