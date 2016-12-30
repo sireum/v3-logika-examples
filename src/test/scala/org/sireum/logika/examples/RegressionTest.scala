@@ -28,9 +28,23 @@ class RegressionTest extends FreeSpec {
 
   "Truth Table" - manual(basePath / 'truthtable)
 
-  "Propositional Logic" - manual(basePath / 'propositional)
+  "Propositional Logic" - {
+    val path = basePath / 'propositional
 
-  "Predicate Logic" - manual(basePath / 'predicate)
+    manual(path)
+
+    "And" - manual(path / 'and)
+    "Or" - manual(path / 'or)
+    "Implies" - manual(path / 'implies)
+    "Negation" - manual(path / 'negation)
+  }
+
+  "Predicate Logic" - {
+    val path = basePath / 'predicate
+
+    "Universal" - manual(path / 'universal)
+    "Existential" - manual(path / 'existential)
+  }
 
   "Programming Logic" - {
     "Manual" - manual(basePath / 'programming / 'manual)
