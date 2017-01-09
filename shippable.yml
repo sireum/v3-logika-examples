@@ -16,7 +16,7 @@ build:
     pull: true
     options: "-e HOME=/root"
   ci:
-    - pushd && cd $SIREUM_HOME && git checkout master && git pull && ./sireum && $SIREUM_HOME/bin/sbt-launch.sh clean && popd
+    - cd $SIREUM_HOME && git checkout master && git pull && ./sireum && $SIREUM_HOME/bin/sbt-launch.sh clean && cd ~/
     - sbt clean test:compile test
   post_ci:
   on_success:
