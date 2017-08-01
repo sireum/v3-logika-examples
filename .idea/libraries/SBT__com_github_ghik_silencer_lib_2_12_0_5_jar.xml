@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="SBT: com.github.ghik:silencer-lib_2.12:0.5:jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/com.github.ghik/silencer-lib_2.12/silencer-lib_2.12-0.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/com.github.ghik/silencer-lib_2.12/silencer-lib_2.12-0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
