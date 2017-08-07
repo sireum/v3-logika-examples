@@ -16,7 +16,7 @@ build:
     pull: true
     options: "-e HOME=/root"
   ci:
-    - cd $SIREUM_HOME && git checkout master && git pull && ./sireum && $SIREUM_HOME/bin/sbt-launch.sh clean && cd $SHIPPABLE_BUILD_DIR
+    - cd $SIREUM_HOME && git checkout master && git pull && git submodule update --init --update --remote && git pull --recurse-submodules && ./sireum && $SIREUM_HOME/bin/sbt-launch.sh clean && cd $SHIPPABLE_BUILD_DIR
     - sbt clean test:compile test
   post_ci:
   on_success:
