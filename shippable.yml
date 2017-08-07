@@ -6,7 +6,6 @@ env:
   global:
     - SIREUM_HOME=/opt/sireum-v3
     - JAVA_HOME=$SIREUM_HOME/platform/java
-    - JAVA_OPTIONS="-Xmx2G -XX:+UseG1GC -XX:ReservedCodeCacheSize=1G -Xss2m -XX:+CMSClassUnloadingEnabled"
 
 build:
   pre_ci:
@@ -23,3 +22,9 @@ build:
   on_failure:
   push:
   cache: true
+  cache_dir_list:
+    - $HOME/.ivy2
+    - $HOME/.coursier
+    - $HOME/.sbt
+    - $SHIPPABLE_BUILD_DIR/platform
+    - $SHIPPABLE_BUILD_DIR/apps
