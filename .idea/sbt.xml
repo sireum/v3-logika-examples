@@ -16,7 +16,7 @@
         <option name="useOurOwnAutoImport" value="true" />
       </SbtProjectSettings>
     </option>
-    <option name="maximumHeapSize" value="4096" />
-    <option name="vmParameters" value="-XX:+UseG1GC -XX:ReservedCodeCacheSize=900m -Xss1M -XX:+CMSClassUnloadingEnabled" />
+    <option name="maximumHeapSize" value="2048" />
+    <option name="vmParameters" value="-XX:+UseG1GC -XX:ReservedCodeCacheSize=1G -Xss4m" />
   </component>
 </project>
