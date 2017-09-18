@@ -1,14 +1,12 @@
-p ∨ q,  ¬p  ⊢  q
+p → ¬q  ⊢  ¬(p ∧ q)
 {
-  1. p ∨ q                    premise
-  2. ¬p                       premise
-  3. {
-       4. p                   assume
-       5. ⊥                   ¬e 4 2
-       6. q                   ⊥e 5
+  1. p → ¬q                   premise
+  2. {
+       3. p ∧ q               assume
+       4. p                   ∧e1 3
+       5. q                   ∧e2 3
+       6. ¬q                  →e 1 4
+       7. ⊥                   ¬e 5 6
      }
-  7. {
-       8. q                   assume
-     }
-  9. q                        ∨e 1 3 7
+  8. ¬(p ∧ q)                 ¬i 2
 }
