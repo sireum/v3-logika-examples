@@ -15,6 +15,7 @@ lazy val logikaExamples = Project(
     ),
     incOptions := incOptions.value.withNameHashing(true),
     addCompilerPlugin("org.sireum" %% "scalac-plugin" % "3.0.0-14"),
+    unmanagedSourceDirectories in Compile += (baseDirectory( _ / "src" / "propositional" )).value,
     retrieveManaged := true
   )
 )
