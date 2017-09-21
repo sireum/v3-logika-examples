@@ -7,6 +7,7 @@ lazy val logikaExamples = Project(
     scalaVersion := "2.12.3",
     scalacOptions ++= Seq("-target:jvm-1.8", "-deprecation", "-nowarn",
       "-Ydelambdafy:method", "-feature", "-unchecked"),
+    javacOptions ++= Seq("-encoding", "UTF-8"),
     libraryDependencies ++= Seq(
       "org.sireum" %% "runtime" % sireumRuntimeVersion,
       "org.sireum" %% "prelude" % sireumRuntimeVersion,
