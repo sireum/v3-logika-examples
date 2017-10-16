@@ -1,13 +1,17 @@
 import org.sireum.logika._
 
-var hours: Z = 4
-l"""{ 1. hours == 4             premise     }"""
+val x: Z = 1
+val y: Z = 5
 
-val minutes: Z = hours * 60
-l"""{ 1. hours == 4             premise
-      2. minutes == hours * 60  premise
-      3. minutes == 240         algebra 1 2 }"""
-
-hours = 5
-l"""{ 1. hours == 5             premise
-      2. minutes == 240         premise     }"""
+l"""{ 1. x == 1            premise
+      2. y == 5            premise }"""
+val q: Z = x + y
+l"""{ 1. q == x + y        premise
+      2. x == 1            premise
+      3. y == 5            premise
+      4. q == 1 + y        subst1 2 1
+      5. q == 1 + 5        subst1 3 4
+      6. q > 5             algebra 5 }"""
+assert(q > 5)
+l"""{ 1. q > 5             premise
+      2. x == 1            premise  }"""
