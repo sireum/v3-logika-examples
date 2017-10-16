@@ -39,6 +39,7 @@ if (x > 0) {
 
 // while-loop
 while (z > 0) {
+  l"""{ modifies z }"""
   print("z is: ")              // print to console
   println(z, ".")              // print z. to console with newline
   z = z - 1
@@ -58,5 +59,6 @@ def f(n: Z): Z = {
 
 // procedure
 def g(n: Z): Unit = {
+  l"""{ modifies z }"""
   z = h(n)                     // function call
 }

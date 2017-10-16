@@ -1,4 +1,4 @@
-val sireumRuntimeVersion = "3.1"
+val sireumRuntimeVersion = "3.1.2"
 
 lazy val logikaExamples = Project(
   id = "logika-examples",
@@ -9,14 +9,15 @@ lazy val logikaExamples = Project(
       "-Ydelambdafy:method", "-feature", "-unchecked"),
     javacOptions ++= Seq("-encoding", "UTF-8"),
     libraryDependencies ++= Seq(
-      "org.sireum" %% "runtime" % sireumRuntimeVersion,
-      "org.sireum" %% "prelude" % sireumRuntimeVersion,
+      "org.sireum" %% "macros" % sireumRuntimeVersion,
+      "org.sireum" %% "library" % sireumRuntimeVersion,
       "com.lihaoyi" %% "ammonite-ops" % "1.0.0" % "test",
       "org.scalatest" %% "scalatest" % "3.0.1" % "test"
     ),
     incOptions := incOptions.value.withNameHashing(true),
-    addCompilerPlugin("org.sireum" %% "scalac-plugin" % "3.0.0-14"),
+    addCompilerPlugin("org.sireum" %% "scalac-plugin" % "3.1.2"),
     unmanagedSourceDirectories in Compile += (baseDirectory( _ / "src" / "propositional" )).value,
+    resolvers += Resolver.sonatypeRepo("public"),
     retrieveManaged := true
   )
 )
