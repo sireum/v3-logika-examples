@@ -1,10 +1,6 @@
 import org.sireum.logika._
 
-val x: Z = 0
-l"""{ 1. x == 0       premise }"""
+val hours: Z = readInt("Type an int > 2: ")
 
-val y: Z = 2 + x
-l"""{ 1. y == 2 + x   premise
-      2. x == 0       premise }"""
-assert(y == 2 + x)
-assert(x == 0)
+assume(hours > 2)
+l"""{ 1. hours > 2   premise }"""
