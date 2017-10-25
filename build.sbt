@@ -1,4 +1,4 @@
-val sireumRuntimeVersion = "3.1.2"
+val sireumRuntimeVersion = "3.1.3"
 
 lazy val logikaExamples = Project(
   id = "logika-examples",
@@ -16,7 +16,7 @@ lazy val logikaExamples = Project(
     ),
     incOptions := incOptions.value.withNameHashing(true),
     addCompilerPlugin("org.sireum" %% "scalac-plugin" % "3.1.2"),
-    unmanagedSourceDirectories in Compile += (baseDirectory( _ / "src" / "propositional" )).value,
+    unmanagedSourceDirectories in Compile += baseDirectory( _ / "src" / "propositional" ).value,
     resolvers += Resolver.sonatypeRepo("public"),
     retrieveManaged := true
   )
