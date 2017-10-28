@@ -1,4 +1,4 @@
-val sireumRuntimeVersion = "3.1.3"
+val sireumRuntimeVersion = "3.1.4"
 
 lazy val logikaExamples = Project(
   id = "logika-examples",
