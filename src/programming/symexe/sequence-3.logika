@@ -1,20 +1,32 @@
 import org.sireum.logika._
 
-def square(a: ZS): Unit = {
-  l"""{ modifies     a
-        ensures      ∀i: (0 ..< a.size)  a(i) == a_in(i) * a_in(i) }"""
+// Convenient Notations for ∀ and ∃
+l"""{ fact def P(n: Z): B }"""  // an (uninterpreted) predicate P
 
-  var x: Z = 0
+val a: ZS = ZS.random
 
-  while (x != a.size) {
-    l"""{ invariant  ∀i: (0 ..< x)  a(i) == a_in(i) * a_in(i)
-                     ∀i: (x ..< a.size)  a(i) == a_in(i)
-                     0 ≤ x
-                     x ≤ a.size
-          modifies   x, a                                          }"""
+l"""{
+  // ∀x: (0 .. a.size)  P(x)     is equivalent to   ∀x: Z  0 ≤ x ∧ x ≤ a.size → P(x)
+  1. (∀x: (0 .. a.size)    P(x)) == (∀x: Z  0 ≤ x ∧ x ≤ a.size → P(x))    auto
 
-    a(x) = a(x) * a(x)
+  // ∀x: (0 ..< a.size)  P(x)    is equivalent to   ∀x: Z  0 ≤ x ∧ x < a.size → P(x)
+  2. (∀x: (0 ..< a.size)   P(x)) == (∀x: Z  0 ≤ x ∧ x < a.size → P(x))    auto
 
-    x = x + 1
-  }
-}
+  // ∀x: (0 <.. a.size)  P(x)    is equivalent to   ∀x: Z  0 < x ∧ x ≤ a.size → P(x)
+  3. (∀x: (0 <.. a.size)   P(x)) == (∀x: Z  0 < x ∧ x ≤ a.size → P(x))    auto
+
+  // ∀x: (0 <..< a.size)  P(x)   is equivalent to   ∀x: Z  0 < x ∧ x < a.size → P(x)
+  4. (∀x: (0 <..< a.size)  P(x)) == (∀x: Z  0 < x ∧ x < a.size → P(x))    auto
+
+  // ∃x: (0 .. a.size)  P(x)     is equivalent to   ∃x: Z  0 ≤ x ∧ x ≤ a.size ∧ P(x)
+  5. (∃x: (0 .. a.size)    P(x)) == (∃x: Z  0 ≤ x ∧ x ≤ a.size ∧ P(x))    auto
+
+  // ∃x: (0 ..< a.size)  P(x)    is equivalent to   ∃x: Z  0 ≤ x ∧ x < a.size ∧ P(x)
+  6. (∃x: (0 ..< a.size)   P(x)) == (∃x: Z  0 ≤ x ∧ x < a.size ∧ P(x))    auto
+
+  // ∃x: (0 <.. a.size)  P(x)    is equivalent to   ∃x: Z  0 < x ∧ x ≤ a.size ∧ P(x)
+  7. (∃x: (0 <.. a.size)   P(x)) == (∃x: Z  0 < x ∧ x ≤ a.size ∧ P(x))    auto
+
+  // ∃x: (0 <..< a.size)  P(x)   is equivalent to   ∃x: Z  0 < x ∧ x < a.size ∧ P(x)
+  8. (∃x: (0 <..< a.size)  P(x)) == (∃x: Z  0 < x ∧ x < a.size ∧ P(x))    auto
+}"""

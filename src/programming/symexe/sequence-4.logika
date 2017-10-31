@@ -1,26 +1,18 @@
 import org.sireum.logika._
 
-var a: ZS = ZS()
-
-var b: ZS = a :+ 1
-
-a = 0 +: a
-
-assert(a == ZS(0))
-assert(b == ZS(1))
-assert(a != b)
-
-a = a :+ 1
-b = 0 +: b
-
-assert(a == b)
-
-a(0) = 5
-assert(a != b)
-
-b = a.clone
-assert(a == b)
-
-val c: ZS = ZS.create(10, 0)
-
-assert(c == ZS(0, 0, 0, 0, 0, 0, 0, 0, 0, 0))
+// Given a sequence and two indices,
+// swap the elements at the given indices.
+def swap(a: ZS, i: Z, j: Z): Unit = {  // Unit is like void in Java
+  l"""{ requires 0 ≤ i ∧ i < a.size    // i is a valid index
+                 0 ≤ j ∧ j < a.size    // j is a valid index
+        modifies a                     // documents a is modified
+        ensures  // note: a_in is the value of a at procedure entry point
+                 a(i) == a_in(j) ∧ a(j) == a_in(i)
+                 ∀k: (0 ..< a.size)
+                   k ≠ i ∧ k ≠ j → a(k) == a_in(k)
+                 a.size == a_in.size
+  }"""
+  val t: Z = a(i)
+  a(i) = a(j)
+  a(j) = t
+}
