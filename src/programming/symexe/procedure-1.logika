@@ -1,23 +1,22 @@
 import org.sireum.logika._
 
-var interest : Z = 0
-var interestRate : Z = 10
-
-def calcInterest(principal: Z) : Z = {
-  l"""{ requires interestRate ≥ 0 ∧ principal ≥ 0
-        modifies interest
-        ensures  interest == principal * interestRate }"""
-  interest = principal * interestRate
-  return interest
+def add1(x: Z): Z = {
+  // increase x by 1
+  l"""{ requires  x > 0 ∧ x < 100
+        ensures   result == x + 1 }"""
+  var y: Z = x + 1
+  return y
 }
 
-var myMoney : Z = 500
+val a: Z = readInt()
 
-assert (myMoney >= 0)
-assert (interestRate >= 0)
+if (a > 0 & a < 100) {
 
-// we know the precondition for the function holds
-calcInterest(myMoney)
-// we get to assume its postcondition
+  l"""{ 1. a > 0 ∧ a < 100   premise }"""
 
-assert(interest == myMoney * interestRate)
+  val b: Z = add1(a)
+
+  l"""{ 1. b == a + 1        premise }"""
+
+  assert(b == a + 1)
+}
