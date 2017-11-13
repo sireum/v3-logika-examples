@@ -1,0 +1,28 @@
+import org.sireum.logika._
+
+def zero2(x: ZS): Unit = {
+  l"""{ requires x.size > 1
+        modifies x
+        ensures  x(0) == 0
+                 x(1) == 0
+                 ∀i: (2 ..< x.size)  x(i) == x_in(i)
+                 x.size == x_in.size }"""
+  x(0) = 0
+  x(1) = 0
+}
+
+val a: ZS = ZS(1, 2, 3)
+
+l"""{ 1. a == ZS(1, 2, 3)  premise
+      2. a.size > 1        auto // obligation of zeroFirst's requires
+}"""
+
+zero2(a)
+
+l"""{ 1. a(0) == 0                             premise // guarantee from zero2's 1st ensures
+      2. a(1) == 0                             premise // guarantee from zero2's 2nd ensures
+      3. ∀i: (2 ..< a.size) a(i) == a_old(i)   premise // guarantee from zero2's 3rd ensures
+      4. a.size == a_old.size                  premise // guarantee from zero2's 4th ensures
+      5. a_old == ZS(1, 2, 3)                  premise
+      6. a(2) == 3                             auto 3 4 5
+      7. a == ZS(0, 0, 3)                      auto 1 2 4 5 6 }"""
