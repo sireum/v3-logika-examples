@@ -1,6 +1,6 @@
 import org.sireum.logika._
 
-// Given non-negative integer arguments m and n,
+// Given integer arguments m and (non-negative) n,
 // mult computes multiplication of m and n by using repeated addition.
 def mult(m: Z, n: Z): Z = {
   l"""{
