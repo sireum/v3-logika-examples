@@ -1,0 +1,23 @@
+import org.sireum.logika._
+
+var interest : Z = 0
+var interestRate : Z = 10
+
+def calcInterest(principal: Z) : Z = {
+  l"""{ requires interestRate ≥ 0 ∧ principal ≥ 0
+        modifies interest
+        ensures  interest == principal * interestRate }"""
+  interest = principal * interestRate
+  return interest
+}
+
+var myMoney : Z = 500
+
+assert (myMoney >= 0)
+assert (interestRate >= 0)
+
+// we know the precondition for the function holds
+calcInterest(myMoney)
+// we get to assume its postcondition
+
+assert(interest == myMoney * interestRate)

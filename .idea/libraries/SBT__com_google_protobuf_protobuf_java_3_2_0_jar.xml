@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="SBT: com.google.protobuf:protobuf-java:3.2.0:jar">
+  <library name="sbt: com.google.protobuf:protobuf-java:3.2.0:jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib_managed/bundles/com.google.protobuf/protobuf-java/protobuf-java-3.2.0.jar!/" />
     </CLASSES>

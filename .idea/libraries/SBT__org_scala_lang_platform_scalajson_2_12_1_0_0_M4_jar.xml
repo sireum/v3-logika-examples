@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="SBT: org.scala-lang.platform:scalajson_2.12:1.0.0-M4:jar">
+  <library name="sbt: org.scala-lang.platform:scalajson_2.12:1.0.0-M4:jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.scala-lang.platform/scalajson_2.12/scalajson_2.12-1.0.0-M4.jar!/" />
     </CLASSES>

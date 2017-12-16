@@ -11,36 +11,3 @@ assert(a(1) == 2)         // 0 ≤ 1 and 1 ≤ a.size are checked
 assert(a(2) == 3)         // 0 ≤ 2 and 2 ≤ a.size are checked
 
 assert(a == ZS(1, 2, 3))  // == is equivalence on content!
-
-a(1) = a(1) + 2           // updating the second element to 4
-
-assert(a == ZS(1, 4, 3))
-
-// Convenient Notations for ∀ and ∃
-l"""{ fact def P(n: Z): B }"""  // an (uninterpreted) predicate P
-
-l"""{
-  // ∀x: (0 .. a.size)  P(x)     is equivalent to   ∀x: Z  0 ≤ x ∧ x ≤ a.size → P(x)
-  1. (∀x: (0 .. a.size)    P(x)) == (∀x: Z  0 ≤ x ∧ x ≤ a.size → P(x))    auto
-
-  // ∀x: (0 ..< a.size)  P(x)    is equivalent to   ∀x: Z  0 ≤ x ∧ x < a.size → P(x)
-  2. (∀x: (0 ..< a.size)   P(x)) == (∀x: Z  0 ≤ x ∧ x < a.size → P(x))    auto
-
-  // ∀x: (0 <.. a.size)  P(x)    is equivalent to   ∀x: Z  0 < x ∧ x ≤ a.size → P(x)
-  3. (∀x: (0 <.. a.size)   P(x)) == (∀x: Z  0 < x ∧ x ≤ a.size → P(x))    auto
-
-  // ∀x: (0 <..< a.size)  P(x)   is equivalent to   ∀x: Z  0 < x ∧ x < a.size → P(x)
-  4. (∀x: (0 <..< a.size)  P(x)) == (∀x: Z  0 < x ∧ x < a.size → P(x))    auto
-
-  // ∃x: (0 .. a.size)  P(x)     is equivalent to   ∃x: Z  0 ≤ x ∧ x ≤ a.size ∧ P(x)
-  5. (∃x: (0 .. a.size)    P(x)) == (∃x: Z  0 ≤ x ∧ x ≤ a.size ∧ P(x))    auto
-
-  // ∃x: (0 ..< a.size)  P(x)    is equivalent to   ∃x: Z  0 ≤ x ∧ x < a.size ∧ P(x)
-  6. (∃x: (0 ..< a.size)   P(x)) == (∃x: Z  0 ≤ x ∧ x < a.size ∧ P(x))    auto
-
-  // ∃x: (0 <.. a.size)  P(x)    is equivalent to   ∃x: Z  0 < x ∧ x ≤ a.size ∧ P(x)
-  7. (∃x: (0 <.. a.size)   P(x)) == (∃x: Z  0 < x ∧ x ≤ a.size ∧ P(x))    auto
-
-  // ∃x: (0 <..< a.size)  P(x)   is equivalent to   ∃x: Z  0 < x ∧ x < a.size ∧ P(x)
-  8. (∃x: (0 <..< a.size)  P(x)) == (∃x: Z  0 < x ∧ x < a.size ∧ P(x))    auto
-}"""

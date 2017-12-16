@@ -1,51 +1,24 @@
 import org.sireum.logika._
 
-var balance: Z = 0
-var elite: B = false
-val eliteMin: Z = 1000000 // $1M is the minimum balance for elite members
+val IntMax: Z = 2147483647
 
-l"""{ invariant
-        balance ≥ 0
-        elite == (balance ≥ eliteMin)             }"""
-
-// note that balance_in is the initial value of balance at the function entry point
-def deposit(amount: Z): B = {
-  l"""{ requires  amount ≥ 0
-        modifies  balance, elite
-        ensures   balance_in == balance - amount  }"""
-
-  balance = balance + amount
-
-  if (balance >= eliteMin) {
-    elite = true
-  } else {
-    elite = false
-  }
-
-  return elite
+def increase(x: Z): Z = {
+  l"""{ requires   x < IntMax
+        ensures    result == x + 1 }"""
+  return x + 1
 }
 
-def withdraw(amount: Z): B = {
-  l"""{ requires  balance ≥ amount
-        modifies  balance, elite
-        ensures   balance == balance_in - amount  }"""
+val a: Z = readInt()
 
-  balance = balance - amount
+if (a < 0) {
 
-  if (balance >= eliteMin) {
-    elite = true
-  } else {
-    elite = false
-  }
+    l"""{ 1. a < 0                  premise
+          2. IntMax = 2147483647    premise
+          3. a < IntMax             algebra 1 2 }"""
 
-  return elite
+    val b: Z = increase(a)
+
+    l"""{ 1. b == a + 1            premise }"""
+
+    assert(b == a + 1)
 }
-
-deposit(500000)
-assert(balance == 500000 & !elite)
-deposit(600000)
-assert(balance == 1100000 & elite)
-withdraw(150000)
-assert(balance == 950000 & !elite)
-deposit(200000)
-assert(balance == 1150000 & elite)

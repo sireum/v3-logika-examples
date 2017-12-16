@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="SBT: org.scalameta:tokenizers_2.12:1.8.0:jar">
+  <library name="sbt: org.scalameta:tokenizers_2.12:1.8.0:jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.scalameta/tokenizers_2.12/tokenizers_2.12-1.8.0.jar!/" />
     </CLASSES>

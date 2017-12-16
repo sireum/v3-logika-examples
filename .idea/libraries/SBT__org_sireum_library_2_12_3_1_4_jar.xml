@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="SBT: org.sireum:library_2.12:3.1.4:jar">
+  <library name="sbt: org.sireum:library_2.12:3.1.4:jar">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.sireum/library_2.12/library_2.12-3.1.4.jar!/" />
     </CLASSES>

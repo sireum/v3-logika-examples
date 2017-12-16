@@ -16,3 +16,18 @@ def swap(a: ZS, i: Z, j: Z): Unit = {  // Unit is like void in Java
   a(i) = a(j)
   a(j) = t
 }
+
+val zs: ZS = ZS(1, 2, 3)
+
+l"""{ 1. 0 ≤ 0 ∧ 0 < zs.size  auto  // obligation for the 1st swap's requires
+      2. 0 ≤ 2 ∧ 2 < zs.size  auto  // obligation for the 2nd swap's requires
+}"""
+
+swap(zs, 0, 2)
+
+l"""{ 1. zs(0) == zs_old(2) ∧ zs(2) == zs_old(0)  premise // guarantee from the 1st swap's ensures
+      2. ∀k: (0 ..< zs.size)
+           k ≠ 0 ∧ k ≠ 2 → zs(k) == zs_old(k)     premise // guarantee from the 2nd swap's ensures
+      3. zs.size == zs_old.size                   premise // guarantee from the 3rd swap's ensures
+}"""
+assert(zs == ZS(3, 2, 1))
