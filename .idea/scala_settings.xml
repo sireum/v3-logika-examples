@@ -8,6 +8,8 @@
       </map>
     </option>
     <option name="interactiveMode" value="false" />
+    <option name="outputLimit" value="10000" />
+    <option name="scalaMetaMode" value="Disabled" />
     <option name="treatDocCommentAsBlockComment" value="true" />
   </component>
 </project>
