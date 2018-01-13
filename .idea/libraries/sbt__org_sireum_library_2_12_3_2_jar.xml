@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sbt: org.sireum:library_2.12:3.2:jar">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/jars/org.sireum/library_2.12/library_2.12-3.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib_managed/srcs/org.sireum/library_2.12/library_2.12-3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
