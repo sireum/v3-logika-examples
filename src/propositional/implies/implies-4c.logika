@@ -1,0 +1,12 @@
+⊢ p → (q → p)
+{
+    1.  {
+        2.  p       assume
+        3.  {
+            4.  q   assume
+            5.  p   premise
+        }
+        6.  q → p   →i 3
+    }
+    7.  p → q → p   →i 1
+}
