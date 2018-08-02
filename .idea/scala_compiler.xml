@@ -25,7 +25,7 @@
         <parameter value="-Ydelambdafy:method" />
       </parameters>
       <plugins>
-        <plugin path="$PROJECT_DIR$/lib_managed/jars/org.sireum/scalac-plugin_2.12/scalac-plugin_2.12-3.2.1.jar" />
+        <plugin path="$PROJECT_DIR$/lib_managed/jars/org.sireum/scalac-plugin_2.12/scalac-plugin_2.12-3.3.1.jar" />
       </plugins>
     </profile>
   </component>
