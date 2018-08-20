@@ -4,14 +4,7 @@
 .history
 .lib/
 dist/*
-/.idea/workspace.xml
-/.idea/tasks.xml
-/.idea/dictionaries
-/.idea/dataSources.ids
-/.idea/dataSources.xml
-/.idea/sqlDataSources.xml
-/.idea/dynamic.xml
-/.idea/uiDesigner.xml
+/.idea
 target/
 lib_managed/
 src_managed/
