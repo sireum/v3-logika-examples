@@ -29,21 +29,21 @@ import java.io.File
 import java.nio.file.Files
 
 import ammonite.ops._
-import org.scalatest.FreeSpec
+import org.scalatest.freespec.AnyFreeSpec
 
 import org.sireum.logika.test._
 
-class CTranspilerTest extends FreeSpec {
+class CTranspilerTest extends AnyFreeSpec {
 
-  val basePath: Path = rootPath / 'src / 'programming
+  val basePath: Path = rootPath / "src" / "programming"
 
-  val targetPath: Path = rootPath / 'target / 'c
+  val targetPath: Path = rootPath / "target" / "c"
 
-  "Manual" - createTests((basePath / 'manual).toIO)
+  "Manual" - createTests((basePath / "manual").toIO)
 
-  "Auto" - createTests((basePath / 'auto).toIO)
+  "Auto" - createTests((basePath / "auto").toIO)
 
-  "SymExe" - createTests((basePath / 'symexe).toIO)
+  "SymExe" - createTests((basePath / "symexe").toIO)
 
   def createTests(d: File): Unit = {
     if (d.isFile) createTest(d)
@@ -67,9 +67,9 @@ class CTranspilerTest extends FreeSpec {
     mkdir ! dir
 
     rel.last in {
-      val r = %%(sireum, 'logika, "--c", ".", "-x", f.getCanonicalPath, SIREUM_SKIP_BUILD="true")(dir)
-      %%('cmake, ".")(dir)
-      %%('make)(dir)
+      val r = %%(sireum, "logika", "--c", ".", "-x", f.getCanonicalPath, SIREUM_SKIP_BUILD="true")(dir)
+      %%("cmake", ".")(dir)
+      %%("make")(dir)
     }
   }
 }

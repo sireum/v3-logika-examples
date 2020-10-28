@@ -25,45 +25,45 @@
 
 package org.sireum.logika.test.examples
 
-import org.scalatest.FreeSpec
+import org.scalatest.freespec.AnyFreeSpec
 
 import ammonite.ops._
 import org.sireum.logika.test._
 
-class RegressionTest extends FreeSpec {
+class RegressionTest extends AnyFreeSpec {
 
-  val basePath: Path = rootPath / 'src
+  val basePath: Path = rootPath / "src"
 
-  "Truth Table" - manual(basePath / 'truthtable)
+  "Truth Table" - manual(basePath / "truthtable")
 
   "Propositional Logic" - {
-    val path = basePath / 'propositional
+    val path = basePath / "propositional"
 
     manual(path)
 
-    "And" - manual(path / 'and)
-    "Or" - manual(path / 'or)
-    "Implies" - manual(path / 'implies)
-    "Negation" - manual(path / 'negation)
+    "And" - manual(path / "and")
+    "Or" - manual(path / "or")
+    "Implies" - manual(path / "implies")
+    "Negation" - manual(path / "negation")
   }
 
   "Predicate Logic" - {
-    val path = basePath / 'predicate
+    val path = basePath / "predicate"
 
-    "Universal" - manual(path / 'universal)
-    "Existential" - manual(path / 'existential)
+    "Universal" - manual(path / "universal")
+    "Existential" - manual(path / "existential")
   }
 
   "Programming Logic" - {
-    "Manual" - manual(basePath / 'programming / 'manual)
-    "Auto" - auto(basePath / 'programming / 'auto)
-    "SymExe" - symexe(basePath / 'programming / 'symexe)
+    "Manual" - manual(basePath / "programming" / "manual")
+    "Auto" - auto(basePath / "programming" / "auto")
+    "SymExe" - symexe(basePath / "programming" / "symexe")
   }
 
   def manual(path: Path): Unit = {
     for (f <- path.toIO.listFiles(_.getName.endsWith(".logika"))) {
       f.getName in {
-        try %%(sireum, 'logika, f.getName, SIREUM_SKIP_BUILD = "true")(path) catch {
+        try %%(sireum, "logika", f.getName, SIREUM_SKIP_BUILD = "true")(path) catch {
           case ShelloutException(e) => fail(e.err.string)
         }
       }
@@ -73,7 +73,7 @@ class RegressionTest extends FreeSpec {
   def auto(path: Path): Unit = {
     for (f <- path.toIO.listFiles(_.getName.endsWith(".logika"))) {
       f.getName in {
-        try %%(sireum, 'logika, "-a", f.getName, SIREUM_SKIP_BUILD = "true")(path) catch {
+        try %%(sireum, "logika", "-a", f.getName, SIREUM_SKIP_BUILD = "true")(path) catch {
           case ShelloutException(e) => fail(e.err.string)
         }
       }
@@ -83,7 +83,7 @@ class RegressionTest extends FreeSpec {
   def symexe(path: Path): Unit = {
     for (f <- path.toIO.listFiles(_.getName.endsWith(".logika"))) {
       f.getName in {
-        try %%(sireum, 'logika, "-x", f.getName, SIREUM_SKIP_BUILD = "true")(path) catch {
+        try %%(sireum, "logika", "-x", f.getName, SIREUM_SKIP_BUILD = "true")(path) catch {
           case ShelloutException(e) => fail(e.err.string)
         }
       }
