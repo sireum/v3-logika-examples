@@ -7,11 +7,11 @@ lazy val logikaExamples = Project(
       "-Ydelambdafy:method", "-feature", "-unchecked"),
     javacOptions ++= Seq("-encoding", "UTF-8"),
     libraryDependencies ++= Seq(
-      "org.sireum.kekinian" %% "library" % "4.20200915.72510af",
-      "com.lihaoyi" %% "ammonite-ops" % "2.2.0" % "test",
-      "org.scalatest" %% "scalatest" % "3.2.2" % "test"
+      "org.sireum.kekinian" %% "library" % "4.20210120.9bbeb24",
+      "com.lihaoyi" %% "ammonite-ops" % "2.3.8" % "test",
+      "org.scalatest" %% "scalatest" % "3.2.3" % "test"
     ),
-    addCompilerPlugin("org.sireum" %% "scalac-plugin" % "4.20201007.2b4c4e9"),
+    addCompilerPlugin("org.sireum" %% "scalac-plugin" % "4.20210120.3a0e50b"),
     Compile / unmanagedSourceDirectories += baseDirectory( _ / "src" / "propositional" ).value,
     resolvers ++= Seq(Resolver.sonatypeRepo("public"), "jitpack" at "https://jitpack.io"),
     retrieveManaged := true))
