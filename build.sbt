@@ -11,6 +11,7 @@ lazy val logikaExamples = Project(
       "com.lihaoyi" %% "ammonite-ops" % "2.4.1" % "test",
       "org.scalatest" %% "scalatest" % "3.2.3" % "test"
     ),
+    libraryDependencySchemes += "org.scala-lang.modules" %% "scala-xml" % "always",
     addCompilerPlugin("org.sireum" %% "scalac-plugin" % "4.20220727.f62bed5"),
     Compile / unmanagedSourceDirectories += baseDirectory( _ / "src" / "propositional" ).value,
     resolvers ++= Seq(Resolver.sonatypeRepo("public"), "jitpack" at "https://jitpack.io"),
